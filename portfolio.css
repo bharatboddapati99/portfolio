@@ -1,24 +1,52 @@
 body{
   padding-bottom:1000px;
-  background-color: rgb(247, 243, 243);
+  background-color:black;
+  color: rgb(17, 18, 16);
   margin:0px;
+  
 }
+.header i:hover, .contents:hover {
+  cursor:pointer;
+  color: #00ff99;   /* bright accent */
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
 .header{
-  background-color:rgba(123, 123, 130, 0.644);
+   background:linear-gradient(90deg, #00ff99, #ff0099, #0099ff);
   display:flex;
   justify-content:space-between ;
 }
+.contents::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;              /* just below the text */
+  width: 0%;
+  height: 2px;
+  background-color: #00ff99; /* accent color */
+  transition: width 0.3s ease;
+}
+
 .contents:hover{
- color:rgb(95, 93, 93);
- font-size:1em;
- 
+ color:rgb(20, 231, 154);
 } 
+/* On hover, line slides in */
+.contents:hover::after {
+  width: 100%;
+}
  .main {
-  background-color: rgb(25, 171, 196);
+  background-color: rgb(8, 28, 31);
   padding: 50px;
   display: flex;        /* Use flexbox for horizontal layout */
   align-items: center;  /* Vertically center image and text */
   margin: 0;
+  animation:colorchange 6s infinite alternate ease-in-out ;
+}
+@keyframes colorchange {
+  0%   { background-color: rgb(8, 28, 31); }
+  50%  { background-color: rgb(25, 171, 196); }
+  100% { background-color: rgb(124, 206, 18); }
 }
 
 img {
@@ -41,45 +69,106 @@ img {
 }
 
 h1 {
-  margin: 2px 0 0 0;      /* tiny gap above name */
+  color:aliceblue;
+  margin: 2px 0 0 0; 
+  font-family:arial;     /* tiny gap above name */
   font-size: 2em;
   padding-bottom:0px;
 }
+.main-summary{
+  color:antiquewhite
+}
 h3{
+  color:aliceblue;
  text-align: center;
  font-family: arial;
+ position:relative;
+ display: block;
+}
+h3::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;              /* just below the text */
+  width: 100%;
+  height: 2px;
+  background:linear-gradient(90deg, #00ff99, #ff0099, #0099ff);
+  transition: width 0.3s ease;
 }
 .skill-summary{
+  color:antiquewhite;
   text-align: center;
+  font-family: arial;
 }
-.frontend-skill{
-  margin-top:80px;
-  margin-right:80px;
-  margin-left:30px;
-  display: inline-block;
-  background-color: aliceblue;
-  width:200px;
-  height:300px;
-  border-style:ridge;
+.skills-container {
+  display: flex;
+  justify-content: space-evenly;  /* equal space around each card */
+  align-items: flex-start;
+  margin-top: 100px;
+}
+
+.frontend-skill {
+  background-color: rgb(115, 215, 9);
+  color:rgb(19, 6, 7);
+  width: 200px;
+  height: auto;
+  border-style: ridge;
   border-radius: 5px;
   position: relative;
-  animation-name:slideleft;
-  animation-duration: 2s;
-
-
+  animation: glow 2s ease-in infinite ;
+  animation: view();
+ 
 }
+
+
+
 @keyframes slideleft {
      from{
-     transform: translate(100px);
+     transform: translate(80px);
      }
 }
-.skill-images{
-  width:60px;
-  border-radius:30px;
-  position: absolute;
-  top:-30px;
-  right:50px;
+
+@keyframes appear {
+     from{
+     opacity:0;
+     
+     transform:translateY(50px);
+     }
+     to{
+      opacity:1;
+      transform:translateY(0);
+      
+     }
 }
+@keyframes glow{
+  50%{
+    box-shadow: 5px 5px 50px rgb(5, 245, 225) 
+    /*box-shadow: horizontal ,vertical, borderradius, color*/
+  }
+}
+.skill-images {
+  width: 60px;
+  border-radius: 30px;
+  margin: 0 auto 10px auto;  /* center the icon and add space below */
+  display: block;
+  position: static;          /* remove absolute positioning */
+}
+
+
+h4{
+  margin-top:10px;
+  text-align: center;
+}
+.skill-list{
+  list-style-type:none;
+  padding:0;
+  margin-top:40px;
+  text-align:left;
+  margin-bottom:20px;
+  font-family: arial;
+}
+ 
+
 
 
 
