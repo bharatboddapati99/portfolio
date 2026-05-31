@@ -13,7 +13,8 @@ body{
 }
 
 .header{
-   background:linear-gradient(90deg, #00ff99, #ff0099, #0099ff);
+   font-family: arial;
+   color:white;
   display:flex;
   justify-content:space-between ;
 }
@@ -108,30 +109,33 @@ h3::after{
 }
 
 .frontend-skill {
-  background-color: rgb(115, 215, 9);
+  background-color: rgb(23, 199, 138);
   color:rgb(19, 6, 7);
   width: 200px;
   height: auto;
   border-style: ridge;
   border-radius: 5px;
   position: relative;
-  animation: glow 2s ease-in infinite ;
-  animation: view();
- 
+   animation:slideleft 3s ease forwards;
+   animation-timeline: scroll();
+   animation-range: entry 0% cover 20%;
+  
 }
 
-
-
 @keyframes slideleft {
-     from{
-     transform: translate(80px);
-     }
+  from {
+    transform: translateX(400px); /* start shifted to the right */
+    opacity: 0;                   /* optional: fade in */
+  }
+  to {
+    transform: translateX(0);     /* end at normal position */
+    opacity: 1;
+  }
 }
 
 @keyframes appear {
      from{
      opacity:0;
-     
      transform:translateY(50px);
      }
      to{
@@ -165,9 +169,76 @@ h4{
   margin-top:40px;
   text-align:left;
   margin-bottom:20px;
-  font-family: arial;
+  font-family:arial;
 }
- 
+.projects {
+  margin-top: 100px;
+  text-align: center;
+  color: aliceblue;
+  font-family: 'Poppins', sans-serif;
+}
+
+.project-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.project-card {
+  background: linear-gradient(135deg, #081c1f, #192bc4);
+  color: white;
+  width: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,255,153,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px rgba(0,255,153,0.7);
+}
+
+.project-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 20px;
+  text-align: left;
+}
+
+.project-info h3 {
+  margin: 0 0 10px;
+  font-size: 1.5em;
+  color: #00ff99;
+}
+
+.project-info p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: #00ff99;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.project-link:hover {
+  background-color: #09aeea;
+  color: white;
+}
+
+
 
 
 
